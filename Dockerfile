@@ -15,7 +15,7 @@ FROM centos:8 AS builder
 RUN cd /opt && \
   curl --retry 8 -s -L \
     --output kibana.tar.gz \
-     https://artifacts.elastic.co/downloads/kibana/kibana-oss-7.10.2-linux-$(arch).tar.gz && \
+     https://artifacts.elastic.co/downloads/kibana/kibana-oss-7.10.2-linux-${arch}.tar.gz && \
   cd -
 
 
