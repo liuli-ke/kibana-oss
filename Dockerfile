@@ -49,7 +49,7 @@ RUN cd /etc/yum.repos.d  &&  \
     for iter in {1..10}; do \
       yum update --setopt=tsflags=nodocs -y && \
       yum install --setopt=tsflags=nodocs -y \
-        fontconfig freetype shadow-utils libnss3.so  && \
+        fontconfig freetype shadow-utils nss nss-tools  && \
       yum clean all && exit_code=0 && break || exit_code=$? && echo "yum error: retry $iter in 10s" && \
       sleep 10; \
     done; \
