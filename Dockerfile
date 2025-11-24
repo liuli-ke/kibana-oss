@@ -35,7 +35,7 @@ RUN find /usr/share/kibana -type d -exec chmod g+s {} \;
 # Copy kibana from stage 0
 # Add entrypoint
 ################################################################################
-FROM centos:8
+FROM rockylinux:8
 EXPOSE 5601
 
 
