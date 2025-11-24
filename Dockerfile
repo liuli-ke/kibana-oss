@@ -43,7 +43,8 @@ RUN cd /etc/yum.repos.d  &&  \
     rm -rf CentOS-* && \
     curl --retry 8 -s -L \
         --output CentOS-Base.repo \
-         https://mirrors.huaweicloud.com/repository/conf/CentOS-8-anon.repo && \
+         https://mirrors.huaweicloud.com/repository/conf/CentOS-8-anon.repo &&  \
+      yum clean all  && yum makecache && yum repolist all && \
       cd - && \
     for iter in {1..10}; do \
       yum update --setopt=tsflags=nodocs -y && \
