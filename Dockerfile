@@ -35,11 +35,17 @@ RUN find /usr/share/kibana -type d -exec chmod g+s {} \;
 # Copy kibana from stage 0
 # Add entrypoint
 ################################################################################
-FROM rockylinux:8
+FROM centos:8
 EXPOSE 5601
 
 
-RUN for iter in {1..10}; do \
+RUN cd /etc/yum.repos.d  &&  \
+    rm -rf CentOS-* && \
+    curl --retry 8 -s -L \
+        --output CentOS-Base.repo \
+         https://mirrors.huaweicloud.com/repository/conf/CentOS-8-anon.repo && \
+      cd - && \
+    for iter in {1..10}; do \
       yum update --setopt=tsflags=nodocs -y && \
       yum install --setopt=tsflags=nodocs -y \
         fontconfig freetype shadow-utils libnss3.so  && \
